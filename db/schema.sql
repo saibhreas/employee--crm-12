@@ -31,3 +31,15 @@ CREATE TABLE employee (
   FOREIGN KEY (manager_id) REFERENCES employee (id)
   ON DELETE SET NULL 
 );
+
+CREATE TABLE manager{
+  id INT AUTO_INCREMENT NOT NULL,
+  first_name VARCHAR (20),
+  last_name VARCHAR (20),
+  role_id INT,
+  PRIMARY KEY (id),
+  FOREIGN KEY (role_id) REFERENCES role (id)
+  ON DELETE CASCADE,
+  
+
+}

@@ -109,10 +109,14 @@ class DB {
   // Find all employees by manager, join with departments and roles to display titles and department names
   findAllEmployeesByManager(managerId) {
     return this.connection.query(
-      "SELECT employee.id, employee.first_name, employee.last_name, department.name AS department, role.title FROM employee LEFT JOIN role on role.id = employee.role_id LEFT JOIN department ON department.id = role.department_id WHERE manager_id = ?;",
+      `SELECT employee.id, employee.first_name, employee.last_name, department.name AS department, role.title 
+      FROM employee 
+      LEFT JOIN role on role.id = employee.role_id 
+      LEFT JOIN department ON department.id = role.department_id 
+      WHERE manager_id = ?`,
       managerId
     );
   }
-}
+};
 
 module.exports = new DB(connection);
